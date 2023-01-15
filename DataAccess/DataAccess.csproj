@@ -59,8 +59,14 @@
     <Compile Include="Migrations\202301121347211_InitialMigration.designer.cs">
       <DependentUpon>202301121347211_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301151632530_HistoryOrderTable.cs" />
+    <Compile Include="Migrations\202301151632530_HistoryOrderTable.designer.cs">
+      <DependentUpon>202301151632530_HistoryOrderTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\HistoryOrderRepository.cs" />
+    <Compile Include="Repository\Interface\IHistoryOrderRepository.cs" />
     <Compile Include="Repository\Interface\IOrderRepository.cs" />
     <Compile Include="Repository\Interface\IProdusRepository.cs" />
     <Compile Include="Repository\Interface\IRepository.cs" />
@@ -87,6 +93,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202301121347211_InitialMigration.resx">
       <DependentUpon>202301121347211_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301151632530_HistoryOrderTable.resx">
+      <DependentUpon>202301151632530_HistoryOrderTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

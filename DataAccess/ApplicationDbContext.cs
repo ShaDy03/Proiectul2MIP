@@ -13,5 +13,6 @@ namespace DataAccess
         internal DbSet<Produs> Produs { get; set; }
         internal DbSet<Role> Role { get; set; }
         internal DbSet<Order> Order { get; set; }
+        internal DbSet<HistoryOrder> HistoryOrder { get; set; }
     }
 }

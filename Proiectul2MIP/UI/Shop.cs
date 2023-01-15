@@ -33,7 +33,7 @@ namespace Proiectul2MIP.UI
         private void ShowShoppingBtn_Click(object sender, System.EventArgs e)
         {
             this.Visible = false;
-            //TODO: P.claudiu MyShop true;
+            new ShopCart().Visible = true;
         }
 
         private void HistoryShoppingBtn_Click(object sender, System.EventArgs e)
@@ -46,14 +46,14 @@ namespace Proiectul2MIP.UI
         private void UserOnlineBtn_Click(object sender, System.EventArgs e)
         {
             this.Visible = false;
-            //TODO: P.claudiu Users Online true;
+            new OnlineUser().Visible = true;
         }
 
         private void MyProfileBtn_Click(object sender, System.EventArgs e)
         {
+            Data.OtherUser = Data.UserData;
             this.Visible = false;
-            //TODO: P.claudiu MyProfile true;
-            //Delete Account, if i am admin, blocked account, if owner, blocked/ modify Role.
+            new Profile().Visible = true;
         }
 
         private void LogOutBtn_Click(object sender, System.EventArgs e)

@@ -34,6 +34,7 @@
             this.IndexBox = new System.Windows.Forms.TextBox();
             this.SendProfile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.HomeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // OnlineUsers
@@ -78,11 +79,24 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Index Profile";
             // 
+            // HomeBtn
+            // 
+            this.HomeBtn.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.HomeBtn.Font = new System.Drawing.Font("Pristina", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.HomeBtn.Location = new System.Drawing.Point(618, 26);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(170, 44);
+            this.HomeBtn.TabIndex = 4;
+            this.HomeBtn.Text = "Home";
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
+            // 
             // OnlineUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.HomeBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.SendProfile);
             this.Controls.Add(this.IndexBox);
@@ -101,5 +115,6 @@
         private System.Windows.Forms.TextBox IndexBox;
         private System.Windows.Forms.Button SendProfile;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button HomeBtn;
     }
 }

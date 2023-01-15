@@ -1,5 +1,6 @@
 ﻿using Models;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Proiectul2MIP.UI
@@ -58,6 +59,28 @@ namespace Proiectul2MIP.UI
             }
             UserNameLBL.Text = Data.OtherUser.UserName;
             RoleLBL.Text = Data.OtherUser.Role.Name;
+            
+            if (Data.OtherUser.RoleId == 4)
+            {
+                ProfileBlockedLBL.Text = "Account Blocked: YES";
+                ProfileBlockedLBL.BackColor = Color.Red;
+            }
+            else
+            {
+                ProfileBlockedLBL.Text = "Account Blocked: NO";
+                ProfileBlockedLBL.BackColor = Color.Lime;
+            }
+
+            if (Data.OtherUser.IsDeleted)
+            {
+                ProfileDeletedLBL.Text = "Account Deleted: YES";
+                ProfileBlockedLBL.BackColor = Color.Red;
+            }
+            else
+            {
+                ProfileDeletedLBL.Text = "Account Deleted: NO";
+                ProfileBlockedLBL.BackColor = Color.Lime;
+            }
         }
 
         private void DeleteAccount_Click(object sender, EventArgs e)

@@ -10,6 +10,7 @@ namespace DataAccess.Repository
         public IOrderRepository Order { get; private set; }
         public IRoleRepository Role { get; private set; }
         public IProdusRepository Produs { get; private set; }
+        public IHistoryOrderRepository HistoryOrder { get; private set; }
 
         internal UnitOfWorks(ApplicationDbContext db)
         {
@@ -19,6 +20,7 @@ namespace DataAccess.Repository
             Order = new OrderRepository(_db);
             Role = new RoleRepository(_db);
             Produs = new ProdusRepository(_db);
+            HistoryOrder = new HistoryOrderRepository(_db);
         }
 
 
