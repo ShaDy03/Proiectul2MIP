@@ -58,8 +58,10 @@ namespace Proiectul2MIP.UI
 
         private void LogOutBtn_Click(object sender, System.EventArgs e)
         {
+            Data.UserData.IsOnline = false;
+            Data.DataBase.User.Update(Data.UserData);
+            Data.UserData = null;
             this.Visible = false;
-            //TODO: P.claudiu Login update this account is offline!;
             new Login().Visible = true;
         }
 
