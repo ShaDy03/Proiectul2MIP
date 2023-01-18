@@ -3,6 +3,7 @@
     partial class Shop
     {
         private Common Data = Common.Instance;
+        private MyCart Cart = MyCart.Instance;
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -41,6 +42,14 @@
             this.HistoryShoppingBtn = new System.Windows.Forms.Button();
             this.ShowShoppingBtn = new System.Windows.Forms.Button();
             this.AddProdusBtn = new System.Windows.Forms.Button();
+            this.ProdusListBox = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.IndexBox = new System.Windows.Forms.TextBox();
+            this.AddProdusMyOrder = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.QuantityBox = new System.Windows.Forms.TextBox();
+            this.TotalPrice = new System.Windows.Forms.Label();
+            this.TotalLBL = new System.Windows.Forms.Label();
             this.UserAccount.SuspendLayout();
             this.MenuPanel.SuspendLayout();
             this.SuspendLayout();
@@ -194,12 +203,102 @@
             this.AddProdusBtn.Text = "Add Produs in Order";
             this.AddProdusBtn.UseVisualStyleBackColor = false;
             // 
+            // ProdusListBox
+            // 
+            this.ProdusListBox.BackColor = System.Drawing.Color.YellowGreen;
+            this.ProdusListBox.Font = new System.Drawing.Font("Pristina", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.ProdusListBox.FormattingEnabled = true;
+            this.ProdusListBox.ItemHeight = 32;
+            this.ProdusListBox.Location = new System.Drawing.Point(26, 166);
+            this.ProdusListBox.Name = "ProdusListBox";
+            this.ProdusListBox.Size = new System.Drawing.Size(301, 356);
+            this.ProdusListBox.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Pristina", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(433, 209);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(151, 37);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Index Produs";
+            // 
+            // IndexBox
+            // 
+            this.IndexBox.BackColor = System.Drawing.Color.Wheat;
+            this.IndexBox.Location = new System.Drawing.Point(371, 249);
+            this.IndexBox.Name = "IndexBox";
+            this.IndexBox.Size = new System.Drawing.Size(256, 26);
+            this.IndexBox.TabIndex = 9;
+            this.IndexBox.TextChanged += new System.EventHandler(this.IndexBox_TextChanged);
+            // 
+            // AddProdusMyOrder
+            // 
+            this.AddProdusMyOrder.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.AddProdusMyOrder.Font = new System.Drawing.Font("Pristina", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.AddProdusMyOrder.Location = new System.Drawing.Point(464, 413);
+            this.AddProdusMyOrder.Name = "AddProdusMyOrder";
+            this.AddProdusMyOrder.Size = new System.Drawing.Size(316, 44);
+            this.AddProdusMyOrder.TabIndex = 8;
+            this.AddProdusMyOrder.Text = "Add Produs In My Order";
+            this.AddProdusMyOrder.UseVisualStyleBackColor = false;
+            this.AddProdusMyOrder.Click += new System.EventHandler(this.AddProdusMyOrder_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Pristina", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(714, 209);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 37);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Quantity";
+            // 
+            // QuantityBox
+            // 
+            this.QuantityBox.BackColor = System.Drawing.Color.Wheat;
+            this.QuantityBox.Location = new System.Drawing.Point(633, 249);
+            this.QuantityBox.Name = "QuantityBox";
+            this.QuantityBox.Size = new System.Drawing.Size(256, 26);
+            this.QuantityBox.TabIndex = 11;
+            this.QuantityBox.TextChanged += new System.EventHandler(this.QuantityBox_TextChanged);
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.AutoSize = true;
+            this.TotalPrice.Font = new System.Drawing.Font("Pristina", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalPrice.Location = new System.Drawing.Point(506, 302);
+            this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.Size = new System.Drawing.Size(245, 37);
+            this.TotalPrice.TabIndex = 14;
+            this.TotalPrice.Text = "Total For This Produs";
+            // 
+            // TotalLBL
+            // 
+            this.TotalLBL.AutoSize = true;
+            this.TotalLBL.BackColor = System.Drawing.Color.DarkKhaki;
+            this.TotalLBL.Font = new System.Drawing.Font("Pristina", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalLBL.Location = new System.Drawing.Point(588, 339);
+            this.TotalLBL.Name = "TotalLBL";
+            this.TotalLBL.Size = new System.Drawing.Size(67, 37);
+            this.TotalLBL.TabIndex = 15;
+            this.TotalLBL.Text = "0 Lei";
+            // 
             // Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.ClientSize = new System.Drawing.Size(1059, 535);
+            this.Controls.Add(this.TotalLBL);
+            this.Controls.Add(this.TotalPrice);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.QuantityBox);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.IndexBox);
+            this.Controls.Add(this.AddProdusMyOrder);
+            this.Controls.Add(this.ProdusListBox);
             this.Controls.Add(this.MenuPanel);
             this.Controls.Add(this.UserAccount);
             this.Name = "Shop";
@@ -209,6 +308,7 @@
             this.UserAccount.PerformLayout();
             this.MenuPanel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -226,5 +326,13 @@
         private System.Windows.Forms.Button ShowShoppingBtn;
         private System.Windows.Forms.Button AddProdusBtn;
         private System.Windows.Forms.Button UserOnlineBtn;
+        private System.Windows.Forms.ListBox ProdusListBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox IndexBox;
+        private System.Windows.Forms.Button AddProdusMyOrder;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox QuantityBox;
+        private System.Windows.Forms.Label TotalPrice;
+        private System.Windows.Forms.Label TotalLBL;
     }
 }

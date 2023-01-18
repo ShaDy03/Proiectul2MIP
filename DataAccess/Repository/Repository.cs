@@ -20,20 +20,19 @@ namespace DataAccess.Repository
             DbSet = context.Set<T>();
         }
 
-        public Task Add(T entity)
+        public void Add(T entity)
         {
-            DbSet.Add(entity);
-            Context.SaveChanges();
-            return Task.CompletedTask;
+                DbSet.Add(entity);
+                Context.SaveChanges();
         }
 
-        public Task<bool> Exists(Expression<Func<T, bool>> filter)
+        public bool Exists(Expression<Func<T, bool>> filter)
         {
             IQueryable<T> query = DbSet;
-            return Task.FromResult(query.Any(filter));
+            return query.Any(filter);
         }
 
-        public Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
+        public async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
         {
             IQueryable<T> query = DbSet;
             IEnumerable<T> response = Enumerable.Empty<T>();
@@ -45,14 +44,14 @@ namespace DataAccess.Repository
 
             if (orderBy != null)
             {
-                response = orderBy(query).ToList();
-                return Task.FromResult(response);
+                response = await orderBy(query).ToListAsync();
+                return response;
             }
-            response = query.ToList();
-            return Task.FromResult(response);
+            response = await query.ToListAsync();
+            return response;
         }
 
-        public Task<T> GetById(int id) => Task.FromResult(DbSet.Find(id));
+        public Task<T> GetById(int id) => DbSet.FindAsync(id);
 
         public Task<T> GetFirstOrDefault(Expression<Func<T, bool>> filter = null)
         {
@@ -63,7 +62,7 @@ namespace DataAccess.Repository
                 query = query.Where(filter);
             }
 
-            return Task.FromResult(query.FirstOrDefault());
+            return query.FirstOrDefaultAsync();
         }
     }
 }

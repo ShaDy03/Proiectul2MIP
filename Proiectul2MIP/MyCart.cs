@@ -1,6 +1,5 @@
 ﻿using Models;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace Proiectul2MIP
 {
@@ -10,10 +9,33 @@ namespace Proiectul2MIP
         private MyCart()
         { }
         public List<Produs> MyShopCart = new List<Produs>();
+        public List<Produs> ShopProdus = new List<Produs>();
 
         public void Remove(int index)
         {
             MyShopCart.Remove(MyShopCart[index]);
+        }
+
+        public void Add (Produs produs)
+        {
+            MyShopCart.Add(produs);
+            Eliminate(produs);
+        }
+
+        private async void Eliminate(Produs produs)
+        {
+            foreach(var shopprodus in ShopProdus)
+            {
+                if(shopprodus.ProdusName == produs.ProdusName)
+                    shopprodus.Quantity -= produs.Quantity;
+
+                if(shopprodus.Quantity == 0)
+                {
+                    ShopProdus.Remove(shopprodus);
+                    shopprodus.Exist = false;
+                    await Common.Instance.DataBase.Produs.Update(shopprodus);
+                }
+            }
         }
     }
 }

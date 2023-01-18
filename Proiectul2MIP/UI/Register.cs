@@ -19,7 +19,7 @@ namespace Proiectul2MIP.UI
             CfPWBox.PasswordChar = CfPWBox.PasswordChar == '*' ? '\0' : '*';
         }
 
-        private Task<bool> Exists(string userName) => Data.DataBase.User.Exists(name => name.UserName == userName);
+        private bool Exists(string userName) => Data.DataBase.User.Exists(name => name.UserName == userName);
 
         private Task Add(User user)
         {
@@ -41,7 +41,7 @@ namespace Proiectul2MIP.UI
 
         private async void button1_Click(object sender, System.EventArgs e)
         {
-            if (await Exists(UserNameBox.Text))
+            if (Exists(UserNameBox.Text))
             {
                 MessageBox.Show($"This username, {UserNameBox.Text}, already exists!");
                 return;

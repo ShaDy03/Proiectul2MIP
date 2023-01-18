@@ -8,7 +8,7 @@ namespace DataAccess.Repository.Interface
 {
     public interface IRepository<T> where T : class
     {
-        Task Add(T entity);
+        void Add(T entity);
         Task<IEnumerable<T>> GetAll(
                 Expression<Func<T, bool>> filter = null,
                 Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null
@@ -18,6 +18,6 @@ namespace DataAccess.Repository.Interface
 
         Task<T> GetById(int id);
 
-        Task<bool> Exists(Expression<Func<T, bool>> filter);
+        bool Exists(Expression<Func<T, bool>> filter);
     }
 }

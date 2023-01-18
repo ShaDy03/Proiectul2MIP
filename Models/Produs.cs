@@ -17,5 +17,8 @@ namespace Models
         public double Price { get; set; }
 
         public string Description { get; set; }
+
+        [Required(ErrorMessage = "Exist is required!")]
+        public bool Exist { get; set; }
     }
 }

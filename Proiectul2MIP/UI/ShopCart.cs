@@ -38,7 +38,7 @@ namespace Proiectul2MIP.UI
         {
             try
             {
-                var index = Int32.Parse(IndexBox.Text);
+                var index = Int32.Parse(IndexBox.Text)-1;
                 if (index >= MyCartO.MyShopCart.Count)
                     throw new ArgumentException("Index is out of range");
 

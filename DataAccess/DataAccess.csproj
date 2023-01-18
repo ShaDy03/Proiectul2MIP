@@ -55,25 +55,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Migrations\202301121347211_InitialMigration.cs" />
-    <Compile Include="Migrations\202301121347211_InitialMigration.designer.cs">
-      <DependentUpon>202301121347211_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301151632530_HistoryOrderTable.cs" />
-    <Compile Include="Migrations\202301151632530_HistoryOrderTable.designer.cs">
-      <DependentUpon>202301151632530_HistoryOrderTable.cs</DependentUpon>
+    <Compile Include="Migrations\202301182103014_InitialMigration.cs" />
+    <Compile Include="Migrations\202301182103014_InitialMigration.designer.cs">
+      <DependentUpon>202301182103014_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\HistoryOrderRepository.cs" />
     <Compile Include="Repository\Interface\IHistoryOrderRepository.cs" />
-    <Compile Include="Repository\Interface\IOrderRepository.cs" />
     <Compile Include="Repository\Interface\IProdusRepository.cs" />
     <Compile Include="Repository\Interface\IRepository.cs" />
     <Compile Include="Repository\Interface\IRoleRepository.cs" />
     <Compile Include="Repository\Interface\IUnitOfWorks.cs" />
     <Compile Include="Repository\Interface\IUserRepository.cs" />
-    <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\ProdusRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
@@ -91,11 +85,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202301121347211_InitialMigration.resx">
-      <DependentUpon>202301121347211_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301151632530_HistoryOrderTable.resx">
-      <DependentUpon>202301151632530_HistoryOrderTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202301182103014_InitialMigration.resx">
+      <DependentUpon>202301182103014_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,10 +1,8 @@
-﻿using DataAccess.Repository.Interface;
-using Models;
+﻿using Models;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Threading.Tasks;
+using System.Data.Entity.Migrations;
+using DataAccess.Repository.Interface;
 
 namespace DataAccess.Repository
 {
