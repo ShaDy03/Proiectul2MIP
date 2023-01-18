@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
@@ -19,21 +20,23 @@ namespace DataAccess.Repository
             DbSet = context.Set<T>();
         }
 
-        public void Add(T entity)
+        public Task Add(T entity)
         {
             DbSet.Add(entity);
             Context.SaveChanges();
+            return Task.CompletedTask;
         }
 
-        public bool Exists(Expression<Func<T, bool>> filter)
+        public Task<bool> Exists(Expression<Func<T, bool>> filter)
         {
             IQueryable<T> query = DbSet;
-            return query.Any(filter);
+            return Task.FromResult(query.Any(filter));
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
+        public Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null)
         {
             IQueryable<T> query = DbSet;
+            IEnumerable<T> response = Enumerable.Empty<T>();
 
             if (filter != null)
             {
@@ -42,18 +45,16 @@ namespace DataAccess.Repository
 
             if (orderBy != null)
             {
-                return orderBy(query).ToList();
+                response = orderBy(query).ToList();
+                return Task.FromResult(response);
             }
-
-            return query.ToList();
+            response = query.ToList();
+            return Task.FromResult(response);
         }
 
-        public T GetById(int id)
-        {
-            return DbSet.Find(id);
-        }
+        public Task<T> GetById(int id) => Task.FromResult(DbSet.Find(id));
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>> filter = null)
+        public Task<T> GetFirstOrDefault(Expression<Func<T, bool>> filter = null)
         {
             IQueryable<T> query = DbSet;
 
@@ -62,7 +63,7 @@ namespace DataAccess.Repository
                 query = query.Where(filter);
             }
 
-            return query.FirstOrDefault();
+            return Task.FromResult(query.FirstOrDefault());
         }
     }
 }

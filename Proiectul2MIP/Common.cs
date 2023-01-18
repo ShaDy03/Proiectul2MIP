@@ -11,7 +11,7 @@ namespace Proiectul2MIP
         public UnitOfWorks DataBase { get; private set; }
         public User UserData { get; set; }
         public User OtherUser { get; set; }
-        public List<User> OnlineUsers { get; private set; }
+        public List<User> OnlineUsers { get; private set; } = new List<User>();
 
         private Common(UnitOfWorks db)
         {
@@ -20,8 +20,16 @@ namespace Proiectul2MIP
 
         public void ActualiseOnlineUsers()
         {
-            OnlineUsers.AddRange(DataBase.User.GetAll(io => io.IsOnline == true));
-            OnlineUsers.ForEach(user => user.Role = DataBase.Role.GetById(user.RoleId));
+            OnlineUsers.Clear();
+            OnlineUsers.AddRange(DataBase.User.GetAll(io => io.IsOnline == true).Result);
+            OnlineUsers.ForEach(user => user.Role = DataBase.Role.GetById(user.RoleId).Result);
+        }
+
+        public void ActualiserUserList()
+        {
+            OnlineUsers.Clear();
+            OnlineUsers.AddRange(DataBase.User.GetAll().Result);
+            OnlineUsers.ForEach(user => user.Role = DataBase.Role.GetById(user.RoleId).Result);
         }
     }
 }

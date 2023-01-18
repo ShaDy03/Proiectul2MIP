@@ -58,6 +58,12 @@
   <ItemGroup>
     <Compile Include="Common.cs" />
     <Compile Include="MyCart.cs" />
+    <Compile Include="UI\AddProdus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AddProdus.Designer.cs">
+      <DependentUpon>AddProdus.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,15 @@
     <Compile Include="UI\ShopCart.Designer.cs">
       <DependentUpon>ShopCart.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ShowAllUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ShowAllUsers.Designer.cs">
+      <DependentUpon>ShowAllUsers.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UI\AddProdus.resx">
+      <DependentUpon>AddProdus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ShopCart.resx">
       <DependentUpon>ShopCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ShowAllUsers.resx">
+      <DependentUpon>ShowAllUsers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

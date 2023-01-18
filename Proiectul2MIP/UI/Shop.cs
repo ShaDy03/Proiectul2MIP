@@ -1,4 +1,5 @@
 ﻿using Models;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiectul2MIP.UI
@@ -56,10 +57,10 @@ namespace Proiectul2MIP.UI
             new Profile().Visible = true;
         }
 
-        private void LogOutBtn_Click(object sender, System.EventArgs e)
+        private void LogOutBtn_ClickAsync(object sender, System.EventArgs e)
         {
             Data.UserData.IsOnline = false;
-            Data.DataBase.User.Update(Data.UserData);
+            Data.DataBase.User.Update(Data.UserData).Wait();
             Data.UserData = null;
             this.Visible = false;
             new Login().Visible = true;
@@ -68,13 +69,14 @@ namespace Proiectul2MIP.UI
         private void AddProdusToShopBtn_Click(object sender, System.EventArgs e)
         {
             this.Visible = false;
-            //TODO: P.claudiu show add produs panel and add to site! if you Admin. Send Request to Owner for approval!
+            new AddProdus().Visible = true;
         }
 
         private void ShowUsersBtn_Click(object sender, System.EventArgs e)
         {
             this.Visible = false;
-            //TODO: P.claudiu show all users.
+            var users = Data.DataBase.User.GetAll().Result;
+
         }
     }
 }

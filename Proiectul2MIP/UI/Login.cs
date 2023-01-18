@@ -2,6 +2,7 @@
 using Proiectul2MIP.UI;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiectul2MIP
@@ -20,7 +21,7 @@ namespace Proiectul2MIP
             return encoderResult;
         }
 
-        private User IsCorrectUser(User user)
+        private async Task<User> IsCorrectUserAsync(User user)
         {
             if(user == null)
                 throw new ArgumentNullException("User is null!");
@@ -33,8 +34,8 @@ namespace Proiectul2MIP
 
             var passwordEncodded = EncoderPassword(user.Password);
 
-            var userDb = Data.DataBase.User.GetFirstOrDefault(u => u.UserName == user.UserName && u.Password == passwordEncodded);
-            userDb.Role = Data.DataBase.Role.GetById(userDb.RoleId);
+            var userDb = await Data.DataBase.User.GetFirstOrDefault(u => u.UserName == user.UserName && u.Password == passwordEncodded);
+            userDb.Role = await Data.DataBase.Role.GetById(userDb.RoleId);
 
             if (userDb == null)
                 throw new ArgumentException("This user not exists or password incorrect!");
@@ -42,15 +43,17 @@ namespace Proiectul2MIP
             return userDb;
         }
 
-        private void LoginBtn_Click(object sender, EventArgs e)
+        private void LoginBtn_ClickAsync(object sender, EventArgs e)
         {
             try
             {
-                Data.UserData = IsCorrectUser(new User()
+                Data.UserData = IsCorrectUserAsync(new User()
                 {
                     UserName = UserNameBox.Text,
                     Password = PWBox.Text
-                });
+                }).Result;
+                Data.UserData.IsOnline = true;
+                Data.DataBase.User.Update(Data.UserData).Wait();
 
                 this.Visible = false;
                 new Shop().Visible = true;

@@ -1,35 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Proiectul2MIP.UI
 {
-    public partial class OnlineUser : Form
+    public partial class ShowAllUsers : Form
     {
-        public OnlineUser()
+        public ShowAllUsers()
         {
             InitializeComponent();
-            OnlineUsers.Items.Clear();
-            Data.ActualiseOnlineUsers();
-            foreach (var user in GetOnlineUsers())
-            {
-                OnlineUsers.Items.Add(user);
-            }
-        }
-
-        private List<string> GetOnlineUsers()
-        {
-            List<string> users = new List<string>();
-            var index = 0;
+            AllUsers.Items.Clear();
+            var i = 1;
             foreach(var user in Data.OnlineUsers)
             {
-                users.Add($"{index}) {user.UserName}");
-                index++;
+                AllUsers.Items.Add($"{i}) {user.UserName} {user}");
             }
-            return users;
         }
 
-        private void SendProfile_Click(object sender, System.EventArgs e)
+        private void SendProfile_Click(object sender, EventArgs e)
         {
             try
             {
@@ -50,6 +37,7 @@ namespace Proiectul2MIP.UI
 
         private void HomeBtn_Click(object sender, EventArgs e)
         {
+            Data.OtherUser = null;
             this.Visible = false;
             new Shop().Visible = true;
         }

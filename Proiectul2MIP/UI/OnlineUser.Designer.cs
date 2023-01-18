@@ -103,7 +103,6 @@
             this.Controls.Add(this.OnlineUsers);
             this.Name = "OnlineUser";
             this.Text = "OnlineUser";
-            this.Load += new System.EventHandler(this.OnlineUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

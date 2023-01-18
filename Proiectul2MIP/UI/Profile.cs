@@ -14,7 +14,9 @@ namespace Proiectul2MIP.UI
 
         private void Profile_Load(object sender, EventArgs e)
         {
-            if (Data.UserData.UserName.Equals(Data.OtherUser.UserName))
+            UserNameProfileLBL.Text = Data.OtherUser.UserName;
+            RoleProfileLBL.Text = Data.OtherUser.Role.Name;
+            if (Data.UserData.UserName == Data.OtherUser.UserName)
             {
                 DeleteAccount.Enabled = true;
                 DeleteAccount.Visible = true;
@@ -57,8 +59,6 @@ namespace Proiectul2MIP.UI
                         BlockedAccount.Enabled = true;
                 }
             }
-            UserNameLBL.Text = Data.OtherUser.UserName;
-            RoleLBL.Text = Data.OtherUser.Role.Name;
             
             if (Data.OtherUser.RoleId == 4)
             {
@@ -82,29 +82,30 @@ namespace Proiectul2MIP.UI
                 ProfileBlockedLBL.BackColor = Color.Lime;
             }
         }
-
-        private void DeleteAccount_Click(object sender, EventArgs e)
+        
+        private void DeleteAccount_ClickAsync(object sender, EventArgs e)
         {
             User user = Data.UserData;
             user.IsDeleted = true;
-            Data.DataBase.User.Update(user);
+            user.IsOnline = false;
+            Data.DataBase.User.Update(user).Wait();
             this.Visible = false;
             new Login().Visible = true;
         }
 
-        private void UPgradeRole_Click(object sender, EventArgs e)
+        private void UPgradeRole_ClickAsync(object sender, EventArgs e)
         {
             User user = Data.OtherUser;
             switch(RoleProfileLBL.Text)
             {
                 case "User":
                     user.RoleId = 2;
-                    Data.DataBase.User.Update(user);
+                    Data.DataBase.User.Update(user).Wait();
                     break;
 
                 case "Administrator":
                     user.RoleId = 3;
-                    Data.DataBase.User.Update(user); 
+                    Data.DataBase.User.Update(user).Wait(); 
                     break;
 
                 default:
@@ -124,24 +125,40 @@ namespace Proiectul2MIP.UI
             Data.DataBase.User.Update(user);
         }
 
-        private void DOWNgradeRole_Click(object sender, EventArgs e)
+        private void DOWNgradeRole_ClickAsync(object sender, EventArgs e)
         {
             User user = Data.OtherUser;
             switch (RoleProfileLBL.Text)
             {
                 case "Administrator":
                     user.RoleId = 1;
-                    Data.DataBase.User.Update(user);
+                    Data.DataBase.User.Update(user).Wait();
                     break;
 
                 case "Owner":
                     user.RoleId = 2;
-                    Data.DataBase.User.Update(user);
+                    Data.DataBase.User.Update(user).Wait();
                     break;
 
                 default:
                     return;
             }
+        }
+
+        private void LogOutBtn_Click(object sender, EventArgs e)
+        {
+            Data.OtherUser = null;
+            Data.UserData.IsOnline = false;
+            Data.DataBase.User.Update(Data.UserData).Wait();
+            this.Visible = false;
+            new Login().Visible = true;
+        }
+
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            Data.OtherUser = null;
+            this.Visible = false;
+            new Shop().Visible = true;
         }
     }
 }

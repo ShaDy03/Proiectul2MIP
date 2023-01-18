@@ -69,6 +69,7 @@
             this.HomeBtn.TabIndex = 3;
             this.HomeBtn.Text = "Home";
             this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
             // 
             // LogOutBtn
             // 
@@ -80,6 +81,7 @@
             this.LogOutBtn.TabIndex = 2;
             this.LogOutBtn.Text = "Logout";
             this.LogOutBtn.UseVisualStyleBackColor = false;
+            this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
             // 
             // RoleLBL
             // 
@@ -111,7 +113,7 @@
             this.DeleteAccount.TabIndex = 2;
             this.DeleteAccount.Text = "Delete Account";
             this.DeleteAccount.UseVisualStyleBackColor = false;
-            this.DeleteAccount.Click += new System.EventHandler(this.DeleteAccount_Click);
+            this.DeleteAccount.Click += new System.EventHandler(this.DeleteAccount_ClickAsync);
             // 
             // BlockedAccount
             // 
@@ -180,7 +182,7 @@
             this.UPgradeRole.TabIndex = 8;
             this.UPgradeRole.Text = "Upgrade Role (Admin)";
             this.UPgradeRole.UseVisualStyleBackColor = false;
-            this.UPgradeRole.Click += new System.EventHandler(this.UPgradeRole_Click);
+            this.UPgradeRole.Click += new System.EventHandler(this.UPgradeRole_ClickAsync);
             // 
             // DOWNgradeRole
             // 
@@ -192,7 +194,7 @@
             this.DOWNgradeRole.TabIndex = 9;
             this.DOWNgradeRole.Text = "DownGrade Role (Admin)";
             this.DOWNgradeRole.UseVisualStyleBackColor = false;
-            this.DOWNgradeRole.Click += new System.EventHandler(this.DOWNgradeRole_Click);
+            this.DOWNgradeRole.Click += new System.EventHandler(this.DOWNgradeRole_ClickAsync);
             // 
             // Profile
             // 

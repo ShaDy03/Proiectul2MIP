@@ -81,7 +81,7 @@
             this.LogOutBtn.TabIndex = 2;
             this.LogOutBtn.Text = "Logout";
             this.LogOutBtn.UseVisualStyleBackColor = false;
-            this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_Click);
+            this.LogOutBtn.Click += new System.EventHandler(this.LogOutBtn_ClickAsync);
             // 
             // RoleLBL
             // 

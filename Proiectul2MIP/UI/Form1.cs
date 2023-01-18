@@ -50,7 +50,7 @@ namespace Proiectul2MIP
             };
             foreach (var user in users)
             {
-                if (!Data.DataBase.User.Exists(u => u.UserName == user.UserName))
+                if (!Data.DataBase.User.Exists(u => u.UserName == user.UserName).Result)
                     Data.DataBase.User.Add(user);
             }
         }

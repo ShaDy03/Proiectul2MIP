@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
@@ -18,9 +19,10 @@ namespace DataAccess.Repository
             UserDbSet = Context.Set<User>();
         }
 
-        public void Update(User user)
+        public Task Update(User user)
         {
             UserDbSet.AddOrUpdate(user);
+            return Task.CompletedTask;
         }
     }
 }

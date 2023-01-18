@@ -19,14 +19,15 @@ namespace Proiectul2MIP.UI
             CfPWBox.PasswordChar = CfPWBox.PasswordChar == '*' ? '\0' : '*';
         }
 
-        private bool Exists(string userName) => Data.DataBase.User.Exists(name => name.UserName == userName);
+        private Task<bool> Exists(string userName) => Data.DataBase.User.Exists(name => name.UserName == userName);
 
-        private async Task Add(User user)
+        private Task Add(User user)
         {
             user.RoleId = 1;
             user.IsDeleted = false;
             user.IsOnline = false;
-            await Task.Run(() => Data.DataBase.User.Add(user));
+            Data.DataBase.User.Add(user);
+            return Task.CompletedTask;
         }
 
         private string EncoderPassword(string password)
@@ -40,7 +41,7 @@ namespace Proiectul2MIP.UI
 
         private async void button1_Click(object sender, System.EventArgs e)
         {
-            if (Exists(UserNameBox.Text))
+            if (await Exists(UserNameBox.Text))
             {
                 MessageBox.Show($"This username, {UserNameBox.Text}, already exists!");
                 return;
@@ -52,11 +53,11 @@ namespace Proiectul2MIP.UI
                 return;
             }
 
-            await Task.Run(() => Add(new User()
+            await Add(new User()
             {
                 UserName = UserNameBox.Text,
                 Password = EncoderPassword(PwBox.Text)
-            }));
+            });
 
             this.Visible = false;
             new Login().Visible = true;
